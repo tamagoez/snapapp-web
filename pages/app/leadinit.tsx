@@ -2,7 +2,7 @@ import Loading from "../../components/loading";
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-export default function leadinit() {
+export default function Leadinit() {
   // const [status, setStatus] = useState("");
   const router = useRouter();
   const [title, setTitle] = useState("Initializing");
