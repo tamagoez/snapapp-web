@@ -10,9 +10,9 @@ export default function Welcome() {
       router.replace(`/app/login?flowto=${router.pathname}`);
     }
   }, [router]);
-  let userid = "ERROR";
-  let username = "ERROR";
-  let emailaddress = "ERROR";
+  let userid = "LOADING";
+  let username = "LOADING";
+  let emailaddress = "LOADING";
   if (user) {
     userid = user.id;
     username = user.email;

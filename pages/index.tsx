@@ -30,6 +30,12 @@ export default function Home() {
             Signup
           </p>
         </Link>
+
+        <Link href="/app/logout">
+          <p className="font-bold cursor-pointer decoration-solid underline">
+            Logout
+          </p>
+        </Link>
       </div>
     </>
   );
