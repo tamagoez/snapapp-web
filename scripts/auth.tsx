@@ -81,6 +81,6 @@ export function isAuthed() {
 export function userdata() {
   const session = supabase.auth.session();
   console.dir(session);
-  if (!session) return false;
+  if (!session) return "error";
   return session.user;
 }
