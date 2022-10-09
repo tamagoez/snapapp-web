@@ -4,15 +4,26 @@ import { signup, isAuthed } from "../../scripts/auth";
 import Head from "next/head";
 import Link from "next/link";
 import Loading from "../../components/loading";
+import { useEffect } from "react";
 
 export default function SignUp() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [checkmail, setCM] = useState(false);
-  if (isAuthed()) {
-    router.push("/app/leadinit");
-  }
+
+  const [flowto, setFlowto] = useState("/app/leadinit");
+  const query = router.query;
+  useEffect(() => {
+    console.dir(query);
+    if (router.isReady) {
+      setFlowto(query!.flowto as string);
+      if (isAuthed()) {
+        router.replace(flowto);
+      }
+    }
+  }, [router]);
+
   async function signupproc() {
     const signupstatus = await signup(email, undefined, password, undefined);
     console.log(signupstatus);

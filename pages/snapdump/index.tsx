@@ -5,7 +5,7 @@ export default function Index() {
   const router = useRouter();
   useEffect(() => {
     if (!isAuthed()) {
-      router.replace(`/app/login?afterflow=${router.pathname}`);
+      router.replace(`/app/login?flowto=${router.pathname}`);
     }
   }, [router]);
   return (

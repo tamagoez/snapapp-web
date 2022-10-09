@@ -4,20 +4,30 @@ import { login, isAuthed } from "../../scripts/auth";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import supabase from "../../utils/supabase";
+import { useEffect } from "react";
 // import Loading from "../../components/loading";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  if (isAuthed()) {
-    router.push("/app/leadinit");
-  }
+  const [flowto, setFlowto] = useState("/app/leadinit");
+
+  const query = router.query;
+  useEffect(() => {
+    console.dir(query);
+    if (router.isReady) {
+      setFlowto(query!.flowto as string);
+      if (isAuthed()) {
+        router.replace(flowto);
+      }
+    }
+  }, [router]);
 
   async function loginproc() {
     const loginstatus = await login(email, undefined, password, undefined);
     if (loginstatus === "success") {
-      router.push("/app/leadinit");
+      router.push(flowto);
     }
   }
   return (

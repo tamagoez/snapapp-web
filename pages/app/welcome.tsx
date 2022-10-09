@@ -6,14 +6,25 @@ export default function Welcome() {
   const user = userdata();
   const router = useRouter();
   useEffect(() => {
-    if (!isAuthed) {
+    if (!isAuthed()) {
       router.replace(`/app/login?flowto=${router.pathname}`);
     }
   }, [router]);
+  let userid = "ERROR";
+  let username = "ERROR";
+  let emailaddress = "ERROR";
+  if (user) {
+    userid = user.id;
+    username = user.email;
+    emailaddress = user.email;
+  }
   return (
     <>
       <h1 className="text-4xl font-bold">Welcome!</h1>
-      <h2>Let&apos;s customize your account!</h2>ID: {user!.id}
+      <h2>Let&apos;s customize your account!</h2>
+      <p>ID: {userid}</p>
+      <p>Username: {username}</p>
+      <p>Email: {emailaddress}</p>
     </>
   );
 }
