@@ -11,23 +11,27 @@ export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [flowto, setFlowto] = useState("/app/leadinit");
+  const [flowto, setFlowto] = useState("");
 
   const query = router.query;
   useEffect(() => {
     console.dir(query);
     if (router.isReady) {
-      setFlowto(query!.flowto as string);
+      if (query.flowto) { setFlowto(query.flowto as string); }
       if (isAuthed()) {
-        router.replace(flowto);
+        flowtourl()
       }
     }
-  }, [router]);
+  }, [router, query]);
+
+  function flowtourl() {
+    if (flowto) { router.replace(`/app/leadinit?flowto=${flowto}`) } else { router.replace("/app/leadinit") }
+  }
 
   async function loginproc() {
     const loginstatus = await login(email, undefined, password, undefined);
     if (loginstatus === "success") {
-      router.push(flowto);
+      flowtourl()
     }
   }
   return (

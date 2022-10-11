@@ -1,20 +1,27 @@
 import flowlist from "../files/flowlist.json";
+import Link from "next/link";
 
 export default function FlowList() {
   return (
     <>
       {flowlist.map((x) => {
-        return <p key={x.title}>{x.title}</p>;
+        return (
+          <Link href={x.url} key={x.title}>
+            <p key={x.title}>{x.title}</p>
+          </Link>
+        );
       })}
     </>
   );
 }
 
-function ListBox({ title, description }) {
+function ListBox({ title, description, url }) {
   return (
-    <div>
-      {title}
-      {description}
-    </div>
+    <Link href={url}>
+      <div>
+        {title}
+        {description}
+      </div>
+    </Link>
   );
 }
