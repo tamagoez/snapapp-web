@@ -14,11 +14,12 @@ export default function Leadinit() {
     if (!lang) {
       window.localStorage.setItem("lang", window.navigator.language);
     }
+    deal(window.localStorage.getItem("lang"));
   }
   console.log(lang);
-  async function deal() {
+  async function deal(glang) {
     status = "Downloading language package...";
-    await fetch(`/api/lang/${lang}`)
+    await fetch(`/api/lang/${glang}`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -28,6 +29,5 @@ export default function Leadinit() {
       });
     router.replace("/app/flow");
   }
-  deal();
   return <Loading title={title} description={description} status={status} />;
 }
