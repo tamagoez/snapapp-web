@@ -20,8 +20,8 @@ export default function ShowLang() {
         {langpack !== undefined ? (
           Object.entries(langpack).map(([key, value]) => (
             <tr key={key}>
-              <td className="border border-slate-300">{key}</td>
-              <td className="border border-slate-300">{value}</td>
+              <td className="border border-slate-300">{key as string}</td>
+              <td className="border border-slate-300">{value as string}</td>
             </tr>
           ))
         ) : (
