@@ -1,0 +1,12 @@
+[
+  {
+    "url": "/snapdump",
+    "title": "SnapDump",
+    "description": "Post anything you want."
+  },
+  {
+    "url": "/app/logout",
+    "title": "Logout",
+    "description": "Logout from SnapApp"
+  }
+]
