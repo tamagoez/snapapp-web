@@ -37,20 +37,21 @@ export default function BottomNav({
         }
         .bottomflex {
           display: flex;
-          margin-top: 2.5px;
+          margin-top: 3.5px;
           justify-content: center;
           align-items: center;
           gap: 12%;
         }
         .bottombutton {
           font-size: 30px;
+          cursor: pointer;
         }
         .bottombuttonadd {
           font-size: 30px;
           border-radius: 50%;
           background-color: #5188b1;
           color: #ffffff;
-          border: 10px solid #5188b1;
+          border: 9px solid #5188b1;
         }
         .bottombuttonadd: hover {
           background-color: #5188b1;

@@ -1,10 +1,10 @@
-import getlang from "../../scripts/lang";
+//import getlang from "../../scripts/lang";
 import FlowList from "../../components/flowlist";
-//import enlang from "../../files/lang/ja.json";
+import enlang from "../../files/lang/ja.json";
 import { useState } from "react";
 
 export default function Flow() {
-  let lang = {};
+  let lang = enlang;
   if (typeof window !== "undefined") {
     lang = JSON.parse(window.localStorage.getItem("langpack"));
   }
