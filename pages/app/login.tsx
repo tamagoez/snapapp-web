@@ -17,23 +17,44 @@ export default function Login() {
   useEffect(() => {
     console.dir(query);
     if (router.isReady) {
-      if (query.flowto) { setFlowto(query.flowto as string); }
+      if (query.flowto) {
+        setFlowto(query.flowto as string);
+      }
       if (isAuthed()) {
-        flowtourl()
+        flowtourl();
       }
     }
   }, [router, query]);
 
   function flowtourl() {
-    if (flowto) { router.replace(`/app/leadinit?flowto=${flowto}`) } else { router.replace("/app/leadinit") }
+    if (flowto) {
+      router.replace(`/app/leadinit?flowto=${flowto}`);
+    } else {
+      router.replace("/app/leadinit");
+    }
   }
 
   async function loginproc() {
     const loginstatus = await login(email, undefined, password, undefined);
     if (loginstatus === "success") {
-      flowtourl()
+      flowtourl();
     }
   }
+
+  const submitOnEnter = (event) => {
+    // Watch for enter key
+    if (event.keyCode === 13) {
+      loginproc();
+    }
+  };
+
+  const focusOnEnter = (event) => {
+    // Watch for enter key
+    if (event.keyCode === 13) {
+      document.getElementById("pass").focus();
+    }
+  };
+
   return (
     <>
       <Head>
@@ -47,19 +68,23 @@ export default function Login() {
           <div className="flex flex-col">
             <label className="text-sm">Email address</label>
             <input
+              id="email"
               type="email"
               className="w-4/5 py-1 drop-shadow-md hover:drop-shadow-xl bg-slate-100 border-slate-700 rounded"
               placeholder="*****@*****.***"
               onChange={(e) => setEmail(e.target.value)}
+              onKeyDown={(e) => focusOnEnter(e)}
             />
           </div>
           <div className="flex flex-col">
             <label className="text-sm">Password</label>
             <input
+              id="pass"
               type="password"
               className="w-4/5 py-1 drop-shadow-md hover:drop-shadow-xl bg-slate-100 border-slate-700 rounded"
               placeholder="**********"
               onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => submitOnEnter(e)}
             />
           </div>
         </div>
