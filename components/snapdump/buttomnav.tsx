@@ -40,7 +40,7 @@ export default function BottomNav({
           margin-top: 3.5px;
           justify-content: center;
           align-items: center;
-          gap: 12%;
+          gap: 11%;
         }
         .bottombutton {
           font-size: 30px;
