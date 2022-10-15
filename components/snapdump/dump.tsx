@@ -1,4 +1,4 @@
-export function Dump({ postid }) {
+export function Dump({ postid }: { postid? : string; }) {
   return (
     <>
       <DumpComponent
