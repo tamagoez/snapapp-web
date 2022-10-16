@@ -21,7 +21,6 @@ export default function Loading({ title, description, status }) {
           height: 250px;
           z-index: 1001;
           text-align: center;
-          background-color: white;
           border-radius: 20px;
         }
 

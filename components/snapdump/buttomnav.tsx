@@ -26,7 +26,7 @@ export default function BottomNav({
           position: fixed;
           bottom: 10px;
           center: 0;
-          backdrop-filter: blur(5px);
+          backdrop-filter: blur(4px);
           background-color: rgba(0, 0, 0, 0.05);
           width: 95%;
           height: 55px;
