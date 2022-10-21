@@ -1,3 +1,3 @@
-export default function ({channelid}) {
+export default function ChannelChat ({channelid}) {
     return <></>
 }
