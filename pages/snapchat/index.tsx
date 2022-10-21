@@ -8,10 +8,10 @@ export default function Message() {
   useEffect(() => {
     if (!isAuthed()) {
       router.replace(`/app/login?flowto=${router.pathname}`);
-    } else {router.replace("/snapchat")}
+    } else {router.replace("/snapchat/personal")}
   }, [router]);
   return (
     <>
-      <BottomNav message={true} />
+      <BottomNav menu={true} />
       </>
   )}

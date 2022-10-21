@@ -85,6 +85,17 @@ export function userdata() {
   return session.user;
 }
 
+export async function getdata(id){
+  try {
+    const { data, error } = await supabase
+      .from('user')
+      .select('name, iconurl')
+      .eq('userid', id)
+    if (error) throw error;
+    return data
+} catch (error) {console.error(error.message)}
+}
+
 export async function allavatarid() {
   const session = supabase.auth.session();
   // console.dir(session);
