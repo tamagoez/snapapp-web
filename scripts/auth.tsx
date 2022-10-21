@@ -84,3 +84,17 @@ export function userdata() {
   if (!session) return null;
   return session.user;
 }
+
+export async function allavatarid() {
+  const session = supabase.auth.session();
+  // console.dir(session);
+  if (!session) return false;
+  try {
+    const { data, error } = await supabase
+      .from('user_avatar')
+      .select('id')
+      .eq('originalid', session.user.id)
+    if (error) throw error;
+    return data
+} catch (error) {console.error(error.message)}
+}

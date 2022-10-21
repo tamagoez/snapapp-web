@@ -14,8 +14,8 @@ export default function TopNav({ title }) {
           }
 
           .topicon {
-            width: 40px;
-            height: 40px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             margin-left: 7px;
             margin-top: 5px;
