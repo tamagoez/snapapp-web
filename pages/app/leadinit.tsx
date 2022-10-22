@@ -1,10 +1,22 @@
 import Loading from "../../components/loading";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function Leadinit() {
   // const [status, setStatus] = useState("");
   const router = useRouter();
+  const query = router.query;
+  const [flowto, setFlowto] = useState("/app/flow");
+
+  useEffect(() => {
+    console.dir(query);
+    if (router.isReady) {
+      if (query.flowto) {
+        setFlowto(query.flowto as string);
+      }
+    }
+  }, [router, query]);
+
   const [title, setTitle] = useState("Initializing");
   const [description, setDescription] = useState("Please wait few moments.");
   let status;
@@ -27,7 +39,7 @@ export default function Leadinit() {
         setTitle(data.le_title);
         setDescription(data.le_description);
       });
-    router.replace("/app/flow");
+    router.replace(flowto);
   }
   return <Loading title={title} description={description} status={status} />;
 }

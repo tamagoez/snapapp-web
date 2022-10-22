@@ -109,3 +109,21 @@ export async function allavatarid() {
     return data
 } catch (error) {console.error(error.message)}
 }
+
+export async function defaultavatar(userid) {
+  try {
+    const { data, error } = await supabase
+      .from('user_avatar')
+      .select('id')
+      .eq('originalid', userid)
+    if (error) throw error;
+    return data
+} catch (error) {console.error(error.message)}
+}
+
+export function nowavatarid() {
+  const session = supabase.auth.session();
+  const getfromid = window.sessionStorage.getItem("avatarid")
+  if (!getfromid) {}
+  return getfromid;
+}
